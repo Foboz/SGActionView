@@ -11,7 +11,7 @@
 
 @interface SGGridMenu : SGBaseMenu
 
-- (id)initWithTitle:(NSString *)title itemTitles:(NSArray *)itemTitles images:(NSArray *)images;
+- (id)initWithTitle:(NSString *)title itemTitles:(NSArray *)itemTitles images:(NSArray *)images cancelTitle:(NSString *)cancelTitle;
 
 - (void)triggerSelectedAction:(void(^)(NSInteger))actionHandle;
 

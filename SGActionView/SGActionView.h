@@ -100,6 +100,7 @@ typedef void(^SGMenuActionHandler)(NSInteger index);
 + (void)showGridMenuWithTitle:(NSString *)title
                    itemTitles:(NSArray *)itemTitles
                        images:(NSArray *)images
+                  cancelTitle:(NSString *)cancelTitle
                selectedHandle:(SGMenuActionHandler)handler;
 
 

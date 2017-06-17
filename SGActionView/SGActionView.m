@@ -301,10 +301,12 @@
 + (void)showGridMenuWithTitle:(NSString *)title
                    itemTitles:(NSArray *)itemTitles
                        images:(NSArray *)images
+                  cancelTitle:(NSString *)cancelTitle
                selectedHandle:(SGMenuActionHandler)handler{
     SGGridMenu *menu = [[SGGridMenu alloc] initWithTitle:title
                                               itemTitles:itemTitles
-                                                  images:images];
+                                                  images:images
+                                             cancelTitle:cancelTitle];
     [menu triggerSelectedAction:^(NSInteger index){
         [[SGActionView sharedActionView] dismissMenu:menu Animated:YES];
         if (handler) {

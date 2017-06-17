@@ -54,7 +54,7 @@
 @interface SGGridMenu ()
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
-@property (nonatomic, strong) SGButton *cancelButton;
+@property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) NSArray *itemTitles;
 @property (nonatomic, strong) NSArray *itemImages;
 @property (nonatomic, strong) NSArray *items;
@@ -87,7 +87,7 @@
         _contentScrollView.backgroundColor = [UIColor clearColor];
         [self addSubview:_contentScrollView];
         
-        _cancelButton = [SGButton buttonWithType:UIButtonTypeCustom];
+        _cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _cancelButton.clipsToBounds = YES;
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:17];
         [_cancelButton setTitleColor:BaseMenuTextColor(self.style) forState:UIControlStateNormal];
@@ -100,7 +100,7 @@
     return self;
 }
 
-- (id)initWithTitle:(NSString *)title itemTitles:(NSArray *)itemTitles images:(NSArray *)images
+- (id)initWithTitle:(NSString *)title itemTitles:(NSArray *)itemTitles images:(NSArray *)images cancelTitle:(NSString *)cancelTitle
 {
     self = [self initWithFrame:[[UIScreen mainScreen] bounds]];
     if (self) {
@@ -108,12 +108,12 @@
         _titleLabel.text = title;
         _itemTitles = [itemTitles subarrayWithRange:NSMakeRange(0, count)];
         _itemImages = [images subarrayWithRange:NSMakeRange(0, count)];
-        [self setupWithItemTitles:_itemTitles images:_itemImages];
+        [self setupWithItemTitles:_itemTitles images:_itemImages cancelTitle:cancelTitle];
     }
     return self;
 }
 
-- (void)setupWithItemTitles:(NSArray *)titles images:(NSArray *)images
+- (void)setupWithItemTitles:(NSArray *)titles images:(NSArray *)images cancelTitle:(NSString *)cancelTitle
 {
     NSMutableArray *items = [NSMutableArray array];
     for (int i=0; i<titles.count; i++) {
@@ -126,6 +126,7 @@
         [items addObject:item];
         [_contentScrollView addSubview:item];
     }
+    [_cancelButton setTitle:cancelTitle forState:UIControlStateNormal];
     _items = [NSArray arrayWithArray:items];
 }
 

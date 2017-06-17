@@ -67,6 +67,7 @@
                                                    [UIImage imageNamed:@"wechat"],
                                                    [UIImage imageNamed:@"pocket"],
                                                    [UIImage imageNamed:@"dropbox"]]
+                                    cancelTitle:@"Cancel"
                                  selectedHandle:nil];
         }
     }
